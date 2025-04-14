@@ -139,4 +139,14 @@ body{
     width: calc(100% - 2px);
     border: 1px solid white;
     margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#gameCanvas{
+    /* border: 1px solid #c42b4e;
+    width: 70%;
+    aspect-ratio: 16/10;  */
 }
