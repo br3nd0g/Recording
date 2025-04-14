@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Spray+Paint&display=swap');
+
+@font-face {
+    font-family: 'cctv';
+    src: url('./cctv.ttf');
+}
+
+/* GLOBAL RULES */
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body{
+    background-color: #272727;
+    color: #c42b4e
+}
+
+.dot{
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.headerContainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* INDEX.HTML STYLES */
+
+#landingHeader{
+    font-family: "cctv";
+    font-weight: 200;
+    color: #c42b4e;
+    font-size: 80px;
+}
+
+#landingHeaderContainer{
+    margin-top: 80px;
+}
+
+#landingHeaderContainer > .dot{
+    background-color: #c42b4e;
+    height: 45px;
+    margin-right: 15px;
+}
+
+#whiteFlash{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    opacity: 0;
+    transition: 0.1s;
+    z-index: 2;
+    display: none;
+}
+
+#landingContent{
+    width: calc(100% - 20%);
+    padding: 0 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+#landingContent > p{
+    max-width: 450px;
+    font-size: 24px;
+}
+
+#landingContent > button{
+    padding: 10px 20px;
+    margin-top: 70px;
+    border: 2px solid #c42b4e;
+    border-radius: 6px;
+    background-color: #3b3b3b;
+    color: #c42b4e;
+    font-size: 28px;
+    transition: 0.2s;
+    position: relative;
+    z-index: 1;
+}
+
+#landingContent > button:hover{
+    background-color: #282828;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#cameraOverlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    opacity: 0;
+    transition: 0.2s;
+    display: none;
+}
+
+#landingContent > button:hover > #cameraOverlay{
+    display: inline-block;
+    opacity: 1;
+}
+
+/* GAME.HTML STYLES */
+
+#gameHeader{
+    font-family: "cctv";
+    font-weight: 200;
+    color: #c42b4e;
+    font-size: 54px;
+}
+
+#gameHeaderContainer{
+    margin-top: 50px;
+}
+
+#gameHeaderContainer > .dot{
+    background-color: #c42b4e;
+    height: 31px;
+    margin-right: 15px;
+}
+
+#gameContainer{
+    width: calc(100% - 2px);
+    border: 1px solid white;
+    margin-top: 60px;
+}
