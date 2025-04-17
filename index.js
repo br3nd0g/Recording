@@ -12,7 +12,7 @@ function whiteFlash() {
 
         setTimeout(() => {
             if (whiteFlash) {
-                whiteFlash.remove();
+                whiteFlash.style.display = 'none';
             }
 
             let cur_url = window.location.href

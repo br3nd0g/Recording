@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: 'cctv';
-    src: url('./cctv.ttf');
+    src: url('./static/fonts/cctv.ttf');
 }
 
 /* GLOBAL RULES */
@@ -43,7 +43,7 @@ body{
 }
 
 #landingHeaderContainer{
-    margin-top: 80px;
+    padding-top: 80px;
 }
 
 #landingHeaderContainer > .dot{
@@ -66,8 +66,8 @@ body{
 }
 
 #landingContent{
-    width: calc(100% - 20%);
-    padding: 0 10%;
+    width: calc(100% - 28%);
+    padding: 0 14%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,9 +76,25 @@ body{
 }
 
 #landingContent > p{
-    max-width: 450px;
+    max-width: 750px;
     font-size: 24px;
 }
+
+@media only screen and (max-width: 735px) {
+    #landingContent > p{
+        max-width: 750px;
+        font-size: 18px;
+    }
+
+    #landingContent > p:after {
+        content: ' Sorry, you cannot play this game on mobile devices.';
+    }
+
+    #landingContent > button{
+        display: none;
+    }
+}
+
 
 #landingContent > button{
     padding: 10px 20px;
@@ -91,6 +107,7 @@ body{
     transition: 0.2s;
     position: relative;
     z-index: 1;
+    margin-bottom: 100px;
 }
 
 #landingContent > button:hover{
@@ -126,7 +143,7 @@ body{
 }
 
 #gameHeaderContainer{
-    margin-top: 50px;
+    padding-top: 50px;
 }
 
 #gameHeaderContainer > .dot{
