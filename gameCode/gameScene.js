@@ -7,7 +7,6 @@ k.scene("game", (round) => {
 
     // variables
     if(round == null){ round = 1; }
-    let wantedPeople;
     let peopleColours
     
     // layers
@@ -45,24 +44,23 @@ k.scene("game", (round) => {
     ])
 
     // people logic
-
     peopleColours = choosePeopleColours(round);
-    wantedPeople = chooseWanted(peopleColours);
-
-    showWantedPosters(uiLayer, wantedPeople);
 
     // adding people
+    const [peopleObjects, wantedPeople] = spawnPeople(peopleColours, spriteLayer);
+    showWantedPosters(uiLayer, wantedPeople);
 
-    const peopleObjects = spawnPeople(peopleColours, spriteLayer);
-
+    // moving people
     const peopleMoveDuration = 4;
-
-    loop(peopleMoveDuration + 0.3, () => {
+    k.loop(peopleMoveDuration + 0.3, () => {
         movePeople(peopleObjects, peopleMoveDuration);
     })
 
+    k.onHover("person", () => {
+        console.log(k.mousePos())
+    })
   
-    onUpdate(() => {
+    k.onUpdate(() => {
 
     })
   

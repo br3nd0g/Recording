@@ -6,6 +6,7 @@ const clamp = (val, min, max) => Math.min(Math.max(val, min), max)
 function chooseWanted(people){
     // randomly choose  2 wanted colour orders
     // return list of wanted colours
+    // NOT IN USE
 
     const numWanted = 2
     const wantedPeople = [];
@@ -44,24 +45,43 @@ function spawnPeople(people, spriteLayer){
     // spawn people in random locations on the screen
 
     const spawnedPeople = [];
+    const wantedPeople = [];
+    const numWanted = 2;
+    let wantedFulfilled = 0;
 
     for(let i = 0; i < people.length; i++){
 
         const colour = people[i]
+        let person;
 
-        const person = spriteLayer.add([
-            sprite(colour, {anim: "walk"}),
-            pos(Math.random() * 720, Math.random() * (468 - 345) + 345),
-            anchor("bot"),
-            area()
-        ])
+        if(wantedFulfilled < numWanted){
+            wantedPeople.push(colour);
+            wantedFulfilled++;
+
+            person = spriteLayer.add([
+                sprite(colour, {anim: "walk"}),
+                pos(Math.random() * 720, Math.random() * (468 - 345) + 345),
+                anchor("bot"),
+                area(),
+                "wanted",
+                "person"
+            ])
+        }else{
+            person = spriteLayer.add([
+                sprite(colour, {anim: "walk"}),
+                pos(Math.random() * 720, Math.random() * (468 - 345) + 345),
+                anchor("bot"),
+                area(),
+                "person"
+            ])
+        }
 
         // person.frame = Math.floor(Math.random() * 3.99)
 
         spawnedPeople.push(person);
     }
 
-    return spawnedPeople;
+    return [spawnedPeople, wantedPeople];
 }
 
 function movePerson(person, moveDuration){
@@ -81,7 +101,7 @@ function movePerson(person, moveDuration){
     }
 
 
-    const targetY = Math.random() * (468 - 345) + 345;
+    const targetY = Math.random() * (480 - 345) + 345;
 
     // console.log(person.pos)
     k.tween(person.pos, k.vec2(targetX, targetY), moveDuration, (p) => {
@@ -93,7 +113,7 @@ function movePerson(person, moveDuration){
         person.pos = p;
         person.use(z(person.pos.y / 1000));
 
-        person.scale = 0.8 + (p.y - 345) / 200;
+        person.scale = 0.7 + (p.y - 345) / 140;
     })
 
     // if (person.pos.y > 345) {
