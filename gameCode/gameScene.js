@@ -51,10 +51,15 @@ k.scene("game", (round) => {
 
     showWantedPosters(uiLayer, wantedPeople);
 
-    const peopleObjects = spawnPeople(peopleColours, spriteLayer);
-
     // adding people
 
+    const peopleObjects = spawnPeople(peopleColours, spriteLayer);
+
+    const peopleMoveDuration = 4;
+
+    loop(peopleMoveDuration + 0.3, () => {
+        movePeople(peopleObjects, peopleMoveDuration);
+    })
 
   
     onUpdate(() => {

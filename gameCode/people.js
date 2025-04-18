@@ -1,12 +1,13 @@
 import k from "./kRun.js"     
 import {resourceLoader, getColourCombos} from "./resourceLoad.js";
 
+const clamp = (val, min, max) => Math.min(Math.max(val, min), max)
 
 function chooseWanted(people){
-    // randomly choose 1 or 2 wanted colour orders
+    // randomly choose  2 wanted colour orders
     // return list of wanted colours
 
-    const numWanted = Math.random() < 0.5 ? 1 : 2;
+    const numWanted = 2
     const wantedPeople = [];
 
     for (let i = 0; i < numWanted; i++) {
@@ -51,19 +52,63 @@ function spawnPeople(people, spriteLayer){
         const person = spriteLayer.add([
             sprite(colour, {anim: "walk"}),
             pos(Math.random() * 720, Math.random() * (468 - 345) + 345),
-            // // scale(1),
             anchor("bot"),
             area()
         ])
 
-        // spawnedPeople.push(person);
+        // person.frame = Math.floor(Math.random() * 3.99)
+
+        spawnedPeople.push(person);
     }
 
     return spawnedPeople;
 }
 
-function movePeople(){
+function movePerson(person, moveDuration){
+
+    const moveRange = 180;
+
+    let targetX = clamp(
+        Math.random() * (person.pos.x + moveRange - (person.pos.x - moveRange)) + (person.pos.x - moveRange),
+        0,
+        720
+    );
+
+    if(targetX === 0){
+        targetX += Math.random() * 50;
+    }else if(targetX === 720){
+        targetX -= Math.random() * 50;
+    }
+
+
+    const targetY = Math.random() * (468 - 345) + 345;
+
+    // console.log(person.pos)
+    k.tween(person.pos, k.vec2(targetX, targetY), moveDuration, (p) => {
+        if(p.x > person.pos.x){
+            person.flipX = true;
+        }else{
+            person.flipX = false;
+        }
+        person.pos = p;
+        person.use(z(person.pos.y / 1000));
+
+        person.scale = 0.8 + (p.y - 345) / 200;
+    })
+
+    // if (person.pos.y > 345) {
+    //     person.scale = 1 + (person.pos.y - 345) / 200;
+    // }
+}
+
+function movePeople(people, moveDuration){
     // choose a movable point and move them there, scaling size if y goes lower
+
+    for (let i = 0; i < people.length; i++) {
+
+        const person = people[i];
+        movePerson(person, moveDuration);
+    }
 }
 
 function arrestPerson(){
