@@ -38,7 +38,28 @@ function choosePeopleColours(roundNum){
     return peopleColours;
 }
 
-function spawnPeople(){
+function spawnPeople(people, spriteLayer){
+
+    // spawn people in random locations on the screen
+
+    const spawnedPeople = [];
+
+    for(let i = 0; i < people.length; i++){
+
+        const colour = people[i]
+
+        const person = spriteLayer.add([
+            sprite(colour, {anim: "walk"}),
+            pos(Math.random() * 720, Math.random() * (468 - 345) + 345),
+            // // scale(1),
+            anchor("bot"),
+            area()
+        ])
+
+        // spawnedPeople.push(person);
+    }
+
+    return spawnedPeople;
 }
 
 function movePeople(){

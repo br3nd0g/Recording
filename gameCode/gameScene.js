@@ -1,6 +1,7 @@
 import k from "./kRun.js"
 import {chooseWanted, choosePeopleColours, spawnPeople, movePeople, arrestPerson, showWantedPosters} from "./people.js"
 import "./sceneLoader.js"
+import placeLines from "./tests.js"
 
 k.scene("game", (round) => {
 
@@ -10,18 +11,18 @@ k.scene("game", (round) => {
     let peopleColours
     
     // layers
-    const spriteLayer = add([
+    const spriteLayer = k.add([
         // fixed(),
         z(50),
     ])
     
-    const uiLayer = add([
+    const uiLayer = k.add([
         fixed(),
         z(100),
     ])
     
     // background
-    const cameraNoise = add([
+    const cameraNoise = k.add([
         sprite("cameraNoise", {anim: "static"}),
         opacity(0.25),
         pos(0, 0),
@@ -29,7 +30,7 @@ k.scene("game", (round) => {
         z(80)
     ])
     
-    const background = add([
+    const background = k.add([
         sprite("background"),
         pos(0, 0),
         scale(0.3515, 0.297),
@@ -50,6 +51,7 @@ k.scene("game", (round) => {
 
     showWantedPosters(uiLayer, wantedPeople);
 
+    const peopleObjects = spawnPeople(peopleColours, spriteLayer);
 
     // adding people
 

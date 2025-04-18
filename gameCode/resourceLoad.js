@@ -35,7 +35,7 @@ function loadPeople(){
                     from: 0,
                     to: 3,
                     loop: true,
-                    speed: 2,
+                    speed: 3,
                 }
             }
         })

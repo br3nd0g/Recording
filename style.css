@@ -80,18 +80,33 @@ body{
     font-size: 24px;
 }
 
+#landingContent > #sorryMessage{
+    display: none;
+}
+
 @media only screen and (max-width: 735px) {
-    #landingContent > p{
-        max-width: 750px;
-        font-size: 18px;
+    #landingContent > #text{
+        display: none;
     }
 
-    #landingContent > p:after {
-        content: ' Sorry, you cannot play this game on mobile devices.';
+    #landingContent > #sorryMessage {
+        max-width: 750px;
+        font-size: 18px;
+        display: inline-block;
     }
 
     #landingContent > button{
         display: none;
+    }
+
+    #landingHeader{
+        font-size: 45px;
+    }
+
+    #landingHeaderContainer > .dot{
+        background-color: #c42b4e;
+        height: 30px;
+        margin-right: 15px;
     }
 }
 
