@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="style.css">
-        <script src="https://unpkg.com/kaboom@3000.0.1/dist/kaboom.js"></script>
+        <script src="https://unpkg.com/kaplay@3001/dist/kaplay.js"></script>
     </head>
     <body>
 
@@ -20,6 +20,32 @@
         <div id="gameContainer">
 
             <canvas id="gameCanvas"></canvas>
+
+            <div id="arrestText">
+                <p id="suspects"></p>
+                <p id="false"></p>
+            </div>
+
+            <div class="lineBreak"></div>
+
+            <div id="records">
+                <div id="identitiesRecorded">
+
+                </div>
+                <div id="interactionsRecorded">
+
+                </div>
+            </div>
+
+            <div class="lineBreak"></div>
+
+            <div id="decision">
+                <p>Do you wish to keep using Live Facial Recognition:</p>
+                <div id="options">
+                    <button id="yes">Continue</button>
+                    <button id="no">Stop</button>
+                </div>
+            </div>
             
         </div>
         

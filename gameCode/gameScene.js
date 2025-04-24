@@ -1,13 +1,24 @@
 import k from "./kRun.js"
-import {chooseWanted, choosePeopleColours, spawnPeople, movePeople, arrestPerson, showWantedPosters} from "./people.js"
+import {chooseWanted, choosePeopleColours, spawnPeople, movePeople, arrestPerson, showWantedPosters, checkPersonHover, clickPerson, addOutlineToPerson} from "./people.js"
 import "./sceneLoader.js"
+import {reduceTime, fadeToBlack, createTimer, updateTimer} from "./gameTimer.js"
 import placeLines from "./tests.js"
+import showRound from "./roundText.js"
 
 k.scene("game", (round) => {
 
     // variables
     if(round == null){ round = 1; }
-    let peopleColours
+    let peopleColours;
+    let hoveredPerson;
+    let focusOutline;
+    let timeLeft = 46; // seconds
+    let fading = false;
+    let timer;
+    let canClick = true;
+    let arrestedPeople = 0;
+    let correctArrests = 0;
+    let incorrectArrests = 0;
     
     // layers
     const spriteLayer = k.add([
@@ -43,25 +54,69 @@ k.scene("game", (round) => {
         scale(0.764, 0.85),
     ])
 
+    // timer
+    timer = createTimer(uiLayer, timeLeft);
+
+    // show round
+    const roundText = showRound(uiLayer, round);
+
     // people logic
     peopleColours = choosePeopleColours(round);
 
     // adding people
-    const [peopleObjects, wantedPeople] = spawnPeople(peopleColours, spriteLayer);
+    let [peopleObjects, wantedPeople] = spawnPeople(peopleColours, spriteLayer);
+    const wantedColours = wantedPeople.map(person => person.sprite);
     showWantedPosters(uiLayer, wantedPeople);
 
     // moving people
     const peopleMoveDuration = 4;
     k.loop(peopleMoveDuration + 0.3, () => {
         movePeople(peopleObjects, peopleMoveDuration);
-    })
-
-    k.onHover("person", () => {
-        console.log(k.mousePos())
-    })
+    });
   
     k.onUpdate(() => {
 
-    })
-  
+        if(!fading && canClick){
+
+            if(focusOutline != null){
+                k.destroy(focusOutline);
+            }
+    
+            hoveredPerson = checkPersonHover(peopleObjects, k.mousePos());
+    
+            if(hoveredPerson != null){
+                focusOutline = addOutlineToPerson(hoveredPerson, spriteLayer);
+            }
+        }
+
+        timeLeft = reduceTime(timeLeft);
+
+        updateTimer(timer, timeLeft);
+
+        if(timeLeft <= 0){
+
+            fading = true;
+            fadeToBlack(correctArrests, incorrectArrests, round);
+        }
+    });
+
+    k.onClick(() => {
+        if(hoveredPerson != null){
+            canClick = false;
+
+            arrestedPeople++;
+
+            clickPerson(hoveredPerson, focusOutline, peopleObjects, wantedPeople, canClick)
+            .then((returnedPeople, wasArrestCorrect)=>{
+                peopleObjects = returnedPeople;
+                if(wasArrestCorrect){
+                    correctArrests++;
+                }else{
+                    incorrectArrests++;
+                }
+                canClick = true;
+            });
+        };
+    });
+
 })

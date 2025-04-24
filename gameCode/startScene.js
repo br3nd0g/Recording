@@ -10,6 +10,14 @@ k.scene("start", () => {
         area(),
         anchor("center")
     ])
+
+    const camera = k.add([
+        pos(530, 0),
+        anchor("topright"),
+        sprite("cctvcamera", {flipX: true}),
+        anchor("topleft"),
+        scale(0.24)
+    ])
   
     startButton.onHover(() => {
         startButton.use(color(k.Color.fromHex("#9c1131")));

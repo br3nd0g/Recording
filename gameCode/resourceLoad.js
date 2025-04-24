@@ -62,6 +62,9 @@ const resourceLoader = () => {
     // loading sprites
     k.loadSprite("cameraOverlay", "images/cameraOverlay.png")
     k.loadSprite("background", "images/background.png")
+    k.loadSprite("cctvcamera", "images/cctvcamera.png")
+    k.loadSprite("news", "images/news.png")
+    k.loadSprite("news_extra", "images/news_extra.png")
 
     k.loadSprite("cameraNoise", "images/cameraNoiseAnimated.png", {
         sliceX: 2,
@@ -80,7 +83,7 @@ const resourceLoader = () => {
     loadPeopleForward();
 
     // FONTS
-    k.loadFont("cctv", "./static/fonts/cctv.ttf")
+    k.loadFont("cctv", "./fonts/cctv.ttf")
 
 }
 
