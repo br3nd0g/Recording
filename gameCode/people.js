@@ -244,7 +244,7 @@ function clickPerson(person, outline, peopleArray, wantedPeopleList, clickBool) 
                 peopleArray.splice(index, 1);
             }
 
-            resolve(peopleArray, correctArrest)
+            resolve([peopleArray, correctArrest])
         })
 
     });

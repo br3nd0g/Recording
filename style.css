@@ -168,8 +168,7 @@ body{
 }
 
 #gameContainer{
-    width: calc(100% - 2px);
-    border: 1px solid white;
+    width: calc(100%);
     margin-top: 60px;
     display: flex;
     flex-direction: column;
@@ -184,6 +183,201 @@ body{
 }
 
 #arrestText{
+    display: none;
+    align-items: center;
+    justify-content: space-around;
+    width: 60%;
+    margin-top: 50px;
+}
+
+#suspects, #false{
+    font-size: 24px;
+}
+
+.lineBreak{
+    height: 0;
+    border-top: 5px solid rgb(190, 185, 185);
+    width: 80%;
+    border-radius: 12px;
+    margin: 40px 0;
+    display: none;
+}
+
+#records{
+    display: none;
+    align-items: start;
+    justify-content: space-evenly;
+    width: 80%;
+}
+
+#identitiesRecorded, #interactionsRecorded{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#interactionsRecorded > p, #identitiesRecorded > p{
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#interactionListUl, #identityListUl{
+    font-size: 18px;
+}
+
+#decision{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+}
+
+#decision > p{
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#options{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+#options > button{
+    padding: 10px 20px;
+    margin-top: 30px;
+    border: 2px solid #c42b4e;
+    border-radius: 6px;
+    background-color: #3b3b3b;
+    color: #c42b4e;
+    font-size: 28px;
+    transition: 0.2s;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 50px;
+}
+
+#options > button:hover{
+    background-color: #282828;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 930px) {
+    #decision > p{
+        font-size: 18px;
+    }
+
+    #options > button{
+        font-size: 18px;
+    }
+
+    #interactionsRecorded > p, #identitiesRecorded > p{
+        font-size: 18px;
+    }
+
+    #suspects, #false{
+        font-size: 18px;
+    }
+}
+
+/* END.HTML STYLES */
+
+#prefUtilText{
+    margin-top: 50px;
+    width: calc(100% - 20%);
+    padding: 0 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+}
+
+#prefUtilText > h2{
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+#prefUtilText > p{
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+#sources{
+    display: flex;
+    align-items: start;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin-top: 50px;
+    width: calc(100% - 20%);
+    padding: 0 10%;
+}
+
+#sources > h2{
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+#sources > p{
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+#sources > h3{
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+#sources > ul{
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+#sources > ul > li{
+    margin-bottom: 5px;
+    list-style-type: none;
 
 }
 
+#sources > ul > li > a{
+    color: #c51b6a;
+    text-decoration: underline;
+    padding-left: 16px;
+}
+
+#home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 20%);
+    padding: 0 10%;
+    margin-top: 50px;
+}
+
+#home > p{
+    font-size: 30px;
+}
+
+#home > button{
+    padding: 10px 20px;
+    margin-top: 40px;
+    border: 2px solid #c42b4e;
+    border-radius: 6px;
+    background-color: #3b3b3b;
+    color: #c42b4e;
+    font-size: 20px;
+    transition: 0.2s;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 50px;
+}
+
+#home > button:hover{
+    background-color: #282828;
+    border-radius: 12px;
+    cursor: pointer;
+}

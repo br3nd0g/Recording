@@ -12,10 +12,47 @@
     </head>
     <body>
 
-        <div class="headerContainer" id="landingHeaderContainer">
+        <div class="headerContainer" id="gameHeaderContainer">
             <div class="dot"></div>
-            <h1 id="landingHeader">Recording</h1>
+            <h1 id="gameHeader">Recording</h1>
         </div>  
+
+        <div id="prefUtilText">
+            <h2>Preference Utilitarianism</h2>
+            <p>A preference utilitarianist would've chosen to stop using LFR after any incorrect arrests, and after seeing that citizens were uncomfortable with the technology.</p>
+        </div>
+
+        <div id="sources">
+            <h2>Sources</h2>
+            <p>Here are sources to read further about the following topics:</p>
+            <h3>Preference Utilitarianism</h3>
+            <ul>
+                <li><a target="_blank" href="https://www.scielo.br/j/trans/a/Zv4RHfp6hbWbbLJKRYSB4Yr/?lang=en&format=html">Hare's preference utilitarianism: an overview and critique</a></li>
+            </ul>
+            <h3>Live Facial Recognition and its problems</h3>
+            <ul>
+                <li><a target="_blank" href="https://www.cambridge.org/core/journals/legal-studies/article/automated-facial-recognition-and-policing-a-bridge-too-far/347341E2BFA2EF1E3CC896A9C5ECDAD5">Automated facial recognition and policing: a Bridge too far?</a></li>
+            </ul>
+            <h3>Why privacy and anonymity matters to citizens</h3>
+            <ul>
+                <li><a target="_blank" href="https://ephemerajournal.org/contribution/social-productivity-anonymity">The social productivity of anonymity</a></li>
+                <li><a target="_blank" href="https://www.jstor.org/stable/2265077">Why Privacy is Important</a></li>
+            </ul>
+        </div>
+
+        <div id="home">
+            <p>Thank you for playing.</p>
+            <button id="homeButton" onclick="goHome()">Home</button>
+        </div>
+
+        <script>
+            function goHome() {
+                let cur_url = window.location.href
+                let cur_url_sub = cur_url.substring(0, cur_url.search('end.html'));
+
+                window.location.href = cur_url_sub + 'index.html';
+            }
+        </script>
 
     </body>
 </html>

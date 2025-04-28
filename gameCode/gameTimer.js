@@ -49,7 +49,14 @@ function fadeToBlack(correctArrests, incorrectArrests, round){
     k.tween(black.opacity, 1, 1, (p) => {
         black.opacity = p;
     }).then(() => {
-        k.go("midround", correctArrests, incorrectArrests, round) // change to midround scene
+        if(round == 4){
+            let cur_url = window.location.href
+            let cur_url_sub = cur_url.substring(0, cur_url.search('game.html'));
+
+            window.location.href = cur_url_sub + 'end.html';
+        }else{
+            k.go("midround", correctArrests, incorrectArrests, round) // change to midround scene
+        }
     })
 
 }

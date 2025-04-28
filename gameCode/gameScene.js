@@ -19,6 +19,10 @@ k.scene("game", (round) => {
     let arrestedPeople = 0;
     let correctArrests = 0;
     let incorrectArrests = 0;
+
+    if(round == 4){
+        timeLeft = 8.5;
+    }
     
     // layers
     const spriteLayer = k.add([
@@ -107,9 +111,10 @@ k.scene("game", (round) => {
             arrestedPeople++;
 
             clickPerson(hoveredPerson, focusOutline, peopleObjects, wantedPeople, canClick)
-            .then((returnedPeople, wasArrestCorrect)=>{
-                peopleObjects = returnedPeople;
-                if(wasArrestCorrect){
+            .then((returnedValues)=>{
+
+                peopleObjects = returnedValues[0];
+                if(returnedValues[1]){
                     correctArrests++;
                 }else{
                     incorrectArrests++;
