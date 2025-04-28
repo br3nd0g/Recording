@@ -4,4 +4,4 @@ import "./sceneLoader.js"
 
 resourceLoader()
 
-k.go("game", 3)
+k.go("game")
