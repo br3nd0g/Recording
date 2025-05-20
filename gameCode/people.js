@@ -26,6 +26,7 @@ function choosePeopleColours(roundNum){
     const possibleColours = getColourCombos()
 
     let numPeople
+    let firstTwo = [];
     
     numPeople = (50 - (roundNum * 10));
     if(roundNum != 1){
@@ -34,13 +35,22 @@ function choosePeopleColours(roundNum){
 
     let peopleColours = [];
 
-    for(let i = 0; i < numPeople; i++){
-        const randomIndex = Math.floor(Math.random() * possibleColours.length)
-        const colour = possibleColours[randomIndex].join("_")
+    for (let i = 0; i < numPeople; i++) {
+        let colour;
+        let isDuplicate;
+
+        do {
+            const randomIndex = Math.floor(Math.random() * possibleColours.length);
+            colour = possibleColours[randomIndex].join("_");
+            isDuplicate = i >= 2 && firstTwo.includes(colour);
+        } while (isDuplicate);
+
+        if (i < 2) {
+            firstTwo.push(colour);
+        }
 
         peopleColours.push(colour);
-    };
-
+    }
 
     return peopleColours;
 }

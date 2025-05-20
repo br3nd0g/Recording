@@ -12,7 +12,7 @@ k.scene("game", (round) => {
     let peopleColours;
     let hoveredPerson;
     let focusOutline;
-    let timeLeft = 46; // seconds
+    let timeLeft = 26; // seconds
     let fading = false;
     let timer;
     let canClick = true;
